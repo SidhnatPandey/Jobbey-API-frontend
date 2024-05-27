@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card } from '@/components/ui'
+import {  Card, Button } from '@/components/ui'
 import "./card.css"
 
 type Location = {
@@ -24,15 +24,18 @@ type Job = {
     industry: string[];
     address: string;
     email: string;
-    location: Location; // replace 'any' with the actual type of 'location'
+    _id: string;
+    location: Location;
 };
 
 type JobCardProps = {
     job: Job;
+    handleApplyNow?: (value: string) => void;
 };
 
-const JobCard: React.FC<JobCardProps> = ({ job }) => {
-  const { title, company, description, salary, lastDate, jobType, minEducation, positions, postingDate, experience, industry, address, email } = job;
+const JobCard: React.FC<JobCardProps> = ({ job, handleApplyNow, }) => {
+  const { title, company, description, salary, lastDate, jobType, minEducation, positions, postingDate, experience, industry, address, email, _id } = job;
+  
   return (
     <Card className="job-card">
       <h2>{title}</h2>
@@ -48,6 +51,11 @@ const JobCard: React.FC<JobCardProps> = ({ job }) => {
       <p>Sector: {industry}</p>
       <p>Address: {address}</p>
       <p>Email: {email}</p>
+      <div style={{marginTop: "1rem"}}>
+        <Button onClick={() => {
+            if (handleApplyNow) handleApplyNow(_id);
+          }} >Apply Now</Button>
+      </div>
     </Card>
   )
 }

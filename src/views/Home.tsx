@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { GET_ALL_JOBS } from "@/constants/api.constant";
 import JobCard from "./JobCard";
 import "./card.css";
+import { applyJob } from "@/services/JobService";
+import ToastWrapper from "@/components/ui/toast/ToastWrapper";
 
 type Location = {
     type: string;
@@ -44,6 +46,17 @@ const getAllJobs = async (): Promise<Response> => {
         .catch((error) => reject(error));
     });
 };
+
+const handleApplyNow = (value: string)=>{
+  console.log(value);
+  applyJob(value).then((response)=>{
+    if(response){
+      ToastWrapper.success("Job Applied Successfully!")
+    }
+  }).catch((err)=>{
+    console.error(err);    
+  });  
+}
   
 const Home = () => {
     const [jobs, setJobs] = useState<Job[]>([]);
@@ -63,7 +76,7 @@ const Home = () => {
         <h1 style={{marginBottom: '1rem', display: "flex", alignContent: 'center', justifyContent: 'center'}}>Job Lists</h1>
         <div className="job-card-container">
         {jobs.map((job) => (
-            <JobCard key = {job._id} job={job} />
+            <JobCard key = {job._id} job={job} handleApplyNow={handleApplyNow} />
         ))}
         </div>
       </>

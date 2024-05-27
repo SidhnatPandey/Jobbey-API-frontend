@@ -61,7 +61,6 @@ function useAuth() {
     const signUp = async (values: SignUpCredential) => {
         try {
             const resp = await apiSignUp(values)
-            console.log(resp);
             if (resp) {
                 return {
                     status: 'success',
