@@ -9,8 +9,17 @@ const ProtectedRoute = () => {
     const { authenticated } = useAuth()
 
     const location = useLocation()
-
+    const role = localStorage.getItem("userRole");
     if (!authenticated) {
+        return (
+            <Navigate
+                replace
+                to={`${unAuthenticatedEntryPath}?${REDIRECT_URL_KEY}=${location.pathname}`}
+            />
+        )
+    }
+    
+    if (location.pathname === '/jobPost' && role !== 'employeer') {
         return (
             <Navigate
                 replace

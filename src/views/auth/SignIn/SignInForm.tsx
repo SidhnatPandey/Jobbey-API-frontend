@@ -49,7 +49,6 @@ const SignInForm = (props: SignInFormProps) => {
         // setSubmitting(true)
 
         const result = await signIn({ email, password })
-        console.log(result);
         if (result?.status === 'failed') {
             setMessage(result.message)
         }
@@ -80,7 +79,7 @@ const SignInForm = (props: SignInFormProps) => {
                 }}
             >
                 {({ touched, errors, isSubmitting }) => (
-                    <Form>
+                    <Form placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                         <FormContainer>
                             <FormItem
                                 label="User Email"

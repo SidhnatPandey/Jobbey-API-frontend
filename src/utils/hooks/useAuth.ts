@@ -1,4 +1,4 @@
-import { apiSignIn, apiSignOut, apiSignUp } from '@/services/AuthService'
+import { apiSignIn, apiSignUp } from '@/services/AuthService'
 import {
     setUser,
     signInSuccess,
@@ -36,17 +36,17 @@ function useAuth() {
             const res = await apiSignIn(values)
             const resp = await res.json()
             if (resp) {
-               const token = resp.token
-                
+               const token = resp.token 
+               const role = resp.role
+               localStorage.setItem("userRole", role);
                 dispatch(signInSuccess(token))
-               
                 const redirectUrl = query.get(REDIRECT_URL_KEY)
                 navigate(
                     redirectUrl ? redirectUrl : appConfig.authenticatedEntryPath
                 )
                 return {
                     status: 'success',
-                    message: '',
+                    message: '',  
                 }
             }
             // eslint-disable-next-line  @typescript-eslint/no-explicit-any
@@ -77,7 +77,6 @@ function useAuth() {
     }
 
     const handleSignOut = () => {
-        
         dispatch(signOutSuccess())
         dispatch(
             setUser({
@@ -91,7 +90,7 @@ function useAuth() {
     }
 
     const signOut = async () => {
-        // await apiSignOut()
+        localStorage.removeItem('userRole');
         handleSignOut()
     }
 
