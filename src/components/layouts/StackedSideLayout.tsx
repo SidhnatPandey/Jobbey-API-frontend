@@ -1,14 +1,15 @@
 import Header from '@/components/template/Header'
-import SidePanel from '@/components/template/SidePanel'
 import UserDropdown from '@/components/template/UserDropdown'
 import MobileNav from '@/components/template/MobileNav'
 import StackedSideNav from '@/components/template/StackedSideNav'
 import View from '@/views'
+import Search from '@/components/template/Search'
 
 const HeaderActionsStart = () => {
     return (
         <>
             <MobileNav />
+            <Search />
         </>
     )
 }
@@ -16,7 +17,7 @@ const HeaderActionsStart = () => {
 const HeaderActionsEnd = () => {
     return (
         <>
-            <SidePanel />
+            {/* <SidePanel /> */}
             <UserDropdown hoverable={false} />
         </>
     )

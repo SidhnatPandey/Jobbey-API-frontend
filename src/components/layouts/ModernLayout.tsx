@@ -1,16 +1,17 @@
 import Header from '@/components/template/Header'
-import SidePanel from '@/components/template/SidePanel'
 import UserDropdown from '@/components/template/UserDropdown'
 import SideNavToggle from '@/components/template/SideNavToggle'
 import MobileNav from '@/components/template/MobileNav'
 import SideNav from '@/components/template/SideNav'
 import View from '@/views'
+import Search from '@/components/template/Search'
 
 const HeaderActionsStart = () => {
     return (
         <>
             <MobileNav />
             <SideNavToggle />
+            <Search />
         </>
     )
 }
@@ -18,7 +19,7 @@ const HeaderActionsStart = () => {
 const HeaderActionsEnd = () => {
     return (
         <>
-            <SidePanel />
+            {/* <SidePanel /> */}
             <UserDropdown hoverable={false} />
         </>
     )

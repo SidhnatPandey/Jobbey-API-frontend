@@ -1,16 +1,17 @@
 import Header from '@/components/template/Header'
-import SideNavToggle from '@/components/template/SideNavToggle'
 import SidePanel from '@/components/template/SidePanel'
 import MobileNav from '@/components/template/MobileNav'
 import UserDropdown from '@/components/template/UserDropdown'
 import SideNav from '@/components/template/SideNav'
 import View from '@/views'
+import Search from '@/components/template/Search'
 
 const HeaderActionsStart = () => {
     return (
         <>
             <MobileNav />
-            <SideNavToggle />
+            {/* <SideNavToggle /> */}
+            <Search />
         </>
     )
 }
