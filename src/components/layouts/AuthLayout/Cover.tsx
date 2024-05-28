@@ -1,6 +1,5 @@
 import { cloneElement } from 'react'
 import Logo from '@/components/template/Logo'
-import { APP_NAME } from '@/constants/app.constant'
 import type { CommonProps } from '@/@types/common'
 import type { ReactNode, ReactElement } from 'react'
 
@@ -30,7 +29,7 @@ const Cover = ({ children, content, ...rest }: CoverProps) => {
                 </div>
                 <span className="text-white">
                     Copyright &copy; {`${new Date().getFullYear()}`}{' '}
-                    <span className="font-semibold">{`${APP_NAME}`}</span>{' '}
+                    <span className="font-semibold">Jobbey</span>{' '}
                 </span>
             </div>
             <div className="flex flex-col justify-center items-center bg-white dark:bg-gray-800">

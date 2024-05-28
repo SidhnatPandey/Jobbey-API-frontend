@@ -1,6 +1,5 @@
 import { cloneElement } from 'react'
 import Avatar from '@/components/ui/Avatar'
-import { APP_NAME } from '@/constants/app.constant'
 import type { CommonProps } from '@/@types/common'
 
 interface SideProps extends CommonProps {
@@ -37,12 +36,12 @@ const Side = ({ children, content, ...rest }: SideProps) => {
                         </div>
                     </div>
                     <p className="text-lg text-white opacity-80">
-                        Get your Job With Jobee
+                        Get your Job With Jobbey
                     </p>
                 </div>
                 <span className="text-white">
                     Copyright &copy; {`${new Date().getFullYear()}`}{' '}
-                    <span className="font-semibold">{`${APP_NAME}`}</span>{' '}
+                    <span className="font-semibold">Jobbey</span>{' '}
                 </span>
             </div>
             <div className="col-span-2 flex flex-col justify-center items-center bg-white dark:bg-gray-800">
