@@ -11,12 +11,9 @@ function About() {
       <ul className="list-disc list-inside mb-6">
         <li className="mb-2">Vivek Kumar Yadav - Software Engineer</li>
         <li className="mb-2">Sidhant Pandey - Software Engineer</li>
-        <li className="mb-2">Kushagra chaudhary - UX Designer</li>
+        <li className="mb-2">Kushagra chaudhary - Software Engineer</li>
         <li className="mb-2">Siddhant Verma - Software Engineer</li>
       </ul>
-      <h2 className="text-3xl font-bold mb-2">Contact Us</h2>
-      <p className="mb-2">Email: info@ourcompany.com</p>
-      <p className="mb-2">Phone: 123-456-7890</p>
     </div>
   )
 }
