@@ -39,6 +39,7 @@ function useAuth() {
                const token = resp.token 
                const role = resp.role
                localStorage.setItem("userRole", role);
+               localStorage.setItem("userName", resp.name);
                 dispatch(signInSuccess(token))
                 const redirectUrl = query.get(REDIRECT_URL_KEY)
                 navigate(
@@ -60,12 +61,13 @@ function useAuth() {
 
     const signUp = async (values: SignUpCredential) => {
         try {
-            const resp = await apiSignUp(values)
+            const resp = await apiSignUp(values)            
             if (resp) {
+                navigate('/sign-in');
                 return {
                     status: 'success',
                     message: '',
-                }
+                };
             }
             // eslint-disable-next-line  @typescript-eslint/no-explicit-any
         } catch (errors: any) {
@@ -91,6 +93,10 @@ function useAuth() {
 
     const signOut = async () => {
         localStorage.removeItem('userRole');
+        localStorage.removeItem('userName');
+        localStorage.removeItem('Token');
+        localStorage.removeItem('admin');
+        localStorage.clear();
         handleSignOut()
     }
 

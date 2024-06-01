@@ -18,6 +18,7 @@ const sessionSlice = createSlice({
         signInSuccess(state, action: PayloadAction<string>) {
             state.signedIn = true
             state.token = action.payload
+            localStorage.setItem('Token', state.token )
         },
         signOutSuccess(state) {
             state.signedIn = false

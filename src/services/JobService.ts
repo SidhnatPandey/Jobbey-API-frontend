@@ -1,26 +1,19 @@
 import { APPLY_NOW, GET_ALL_JOBS, NEW_JOB } from "@/constants/api.constant"
-import ApiService from "./ApiService"
 import FormData from 'form-data';
 
+const token=localStorage.getItem('Token')
 interface JobData {
     title: string;
-    slug: string;
     description: string;
     email: string;
     address: string;
-    location: {
-        type: string;
-        coordinates: [number, number];
-    };
     company: string;
     industry: string[];
     jobType: string;
     minEducation: string;
+    positions: number;
     experience: string;
     salary: number;
-    postingDate: string;
-    lastDate: string;
-    positions: number;
 }
 
 
@@ -36,26 +29,25 @@ export const getAllJobs = async () =>{
 export const applyJob = async (id: string, resume: File) => {
     const formData = new FormData();
     formData.append('file', resume);
-  
-    return ApiService.fetchData({
-      url: APPLY_NOW.replace(':id', id),
-      method: 'put',
-      data: formData,
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
+    const url = APPLY_NOW.replace(":id", id);
+    const response = await fetch(url, {
+        method: "PUT",
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+        body: formData as unknown as BodyInit
     });
+   return response
 };
 
 export const newJob = async(data: JobData)=>{
-    return ApiService.fetchData({
-        url: NEW_JOB,
-        method: 'post',
-        data: data,
+    const response = await fetch(NEW_JOB, {
+        method: 'POST',
         headers: {
-            'Content-Type': 'Application/json'
-        }
-    })
-    
+            'Content-Type': 'application/json', 
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(data) 
+    });    
+    return response    
 }
-  
